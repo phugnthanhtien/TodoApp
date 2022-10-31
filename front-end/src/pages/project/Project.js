@@ -7,7 +7,7 @@ function Project() {
   return (
     <div>
       <button onClick={() => setShowPopup((prev) => !prev)}>Show pop up</button>
-      {showPopup && <PopupEdit title={"this is pop up"} />}
+      {showPopup && <PopupEdit todo = "Create" title={"Project"} />}
     </div>
   );
 }
