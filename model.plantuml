@@ -1,0 +1,31 @@
+@startuml
+entity Task {
+   _id: String
+   content: String
+   userId: String
+   projectId: String
+}
+
+entity Project {
+   _id: String
+   name: String
+}
+
+entity User {
+   _id: String
+   fullname: String
+   email: String
+   password: String
+}
+
+entity Project_User {
+   userId: String
+   projectId: String
+   isAdmin: Boolean
+}
+Project ||--|{ Task
+User }|--|{ Project
+Project_User ||--|| User
+Project_User ||--|| Project
+
+@enduml
