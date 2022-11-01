@@ -1,0 +1,24 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.project-container {
+    width: 100%;
+    display: flex;
+}
+
+.add-button {
+    margin: 10px;
+    padding: 10px;
+    width: 180px;
+    height: 100px;
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+    background-color: rgba(31,41,49, .1);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px  dashed  black;
+}
