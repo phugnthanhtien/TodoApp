@@ -1,13 +1,12 @@
-import { useState } from "react";
 import PopupEdit from "../../components/popUpedit";
+import Popup from "reactjs-popup";
 
 function Project() {
-  const [showPopup, setShowPopup] = useState(false);
-
   return (
     <div>
-      <button onClick={() => setShowPopup((prev) => !prev)}>Show pop up</button>
-      {showPopup && <PopupEdit todo = "Create" title={"Project"} />}
+      <Popup modal trigger={<button>Click Me</button>}>
+        {close => <PopupEdit title={"Create Project"} close={close} />}
+      </Popup>
     </div>
   );
 }
