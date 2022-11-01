@@ -30,8 +30,8 @@
 }
 
 .title {
-    font-size: 22px;
-    font-weight: 800;
+    font-size: 26px;
+    font-weight: 600;
 }
 
 .content {
@@ -52,7 +52,7 @@
     margin-top: 12px;
     border-radius: 4px;
     color: #fff;
-    height: 32px;
+    height: 38px;
     font-size: 20px;
     background-color: rgb(132,48,213);
     display: flex;
