@@ -6,7 +6,7 @@ import route from './routes/index.js'
 
 const app = express()
 const hostname = '127.0.0.1'
-const port = 3000
+const port = 3001
 
 app.use(express.json())
 app.use(express.text())
