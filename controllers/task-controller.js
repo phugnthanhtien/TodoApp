@@ -1,6 +1,7 @@
 import Task from '../models/task.js';
 
 function getAllTasks(req, res) {
+    res.set('Access-Control-Allow-Origin', '*');
     Task.find((err, data) => {
         res.send(JSON.stringify(data))
     })
