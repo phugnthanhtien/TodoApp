@@ -1,9 +1,9 @@
 import './Task.module.css'
 
 function Task({ content }) {
-    return(
+    return (
         <div className="task">
-            <div className="content">
+            <div className="task__content">
                 { content }
             </div>
             <div className="actions">
