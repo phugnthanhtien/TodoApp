@@ -2,7 +2,7 @@ import styles from "./PopupEdit.module.css";
 import classNames from "classnames/bind";
 const cx = classNames.bind(styles);
 
-function PopupEdit({ title, close }) {
+function PopupEdit({ title, close, id}) {
     return (
       <div className={cx("wrapper")}>
         <div className={cx(["popup", "animate"])}>
@@ -25,7 +25,7 @@ function PopupEdit({ title, close }) {
           <div className={cx("content")}>
             <input className={cx("input")} placeholder={title} />
           </div>
-          <div className={cx("button")}>
+          <div className={cx("button")} onClick = {() => {console.log(id)}}>
             <h3>{title}</h3>
           </div>
         </div>
