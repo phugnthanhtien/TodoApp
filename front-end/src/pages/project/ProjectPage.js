@@ -28,8 +28,12 @@ function ProjectPage() {
         >
           {(close) => <PopupEdit title={"Create Project"} close={close} />}
         </Popup>
-        <Project primary title="Trick" />
-        <Project primary title="Treat" />
+        {projects.map((project, index) => (
+          <Project 
+          key={index} 
+          primary 
+          title={project.content} />
+        ))}
       </div>
     </div>
   );
