@@ -1,9 +1,7 @@
 import Project from '../models/project.js';
 
 function getAllProjects(req, res) {
-    // Project.find((err, data) => {
-    //     res.send(JSON.stringify(data))
-    // })
+    res.set('Access-Control-Allow-Origin', '*');
     Project.find({})
         .then(projects => {
             res.send(JSON.stringify(projects))

@@ -10,6 +10,7 @@
 
 .popup {
     position: relative;
+    top: 7rem;
     margin: 5% auto 15% auto;
     padding: 15px 18px;
     background-color: #fff;

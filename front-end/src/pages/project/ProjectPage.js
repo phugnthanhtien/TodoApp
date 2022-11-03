@@ -11,11 +11,10 @@ function ProjectPage() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/tasks")
+    fetch("http://127.0.0.1:3001/projects")
       .then((res) => res.json())
       .then((data) => {
         setProjects(data);
-        console.log(data);
       });
   }, []);
 
@@ -32,7 +31,7 @@ function ProjectPage() {
           <Project 
           key={index} 
           primary 
-          title={project.content} />
+          title={project.name} />
         ))}
       </div>
     </div>

@@ -1,8 +1,20 @@
+import Popup from "reactjs-popup";
+import { useEffect, useState } from "react";
+
 import './Task.css'
 import Task from '../../components/task'
 
-function TaskPage(props) {
-   console.log(props)
+function TaskPage() {
+
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+      fetch("http://127.0.0.1:3001/tasks")
+        .then((res) => res.json())
+        .then((data) => {
+          setTasks(data);
+        });
+    }, []);
 
    return(
     <div className="main">
@@ -16,12 +28,7 @@ function TaskPage(props) {
                 <button>Add task</button>
             </div>
             <div className="list-task">
-                <Task
-                    content="Pepsi"
-                />
-                <Task
-                    content="Coca"
-                />
+                {tasks.map(task => <Task key = {task._id} content = {task.content}/>)}
             </div>
         </div>
     </div>
