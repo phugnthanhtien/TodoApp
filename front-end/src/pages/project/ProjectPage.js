@@ -27,11 +27,11 @@ function ProjectPage() {
         >
           {(close) => <PopupEdit title={"Create Project"} close={close} />}
         </Popup>
-        {projects.map((project, index) => (
+        {projects.map(project => (
           <Project 
-          key={index} 
+          key={project._id} 
           primary 
-          title={project.name} />
+          data = {project} />
         ))}
       </div>
     </div>

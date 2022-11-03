@@ -1,8 +1,9 @@
-import Popup from "reactjs-popup";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import './Task.css'
 import Task from '../../components/task'
+
+const taskContext = createContext();
 
 function TaskPage() {
 
@@ -27,9 +28,9 @@ function TaskPage() {
                 />
                 <button>Add task</button>
             </div>
-            <div className="list-task">
-                {tasks.map(task => <Task key = {task._id} content = {task.content}/>)}
-            </div>
+            <taskContext.Provider value = {tasks} className="list-task">
+                {tasks.map(task => <Task key = {task._id} data = {task}/>)}
+            </taskContext.Provider>
         </div>
     </div>
    )
