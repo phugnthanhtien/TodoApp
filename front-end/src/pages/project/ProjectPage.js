@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import Project from "../../components/project";
 
 import classNames from "classnames/bind";
-import styles from "./ProjectPage.module.css";
+import styles from "./ProjectPage.css";
 import { useEffect, useState } from "react";
 const cx = classNames.bind(styles);
 

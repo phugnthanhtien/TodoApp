@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
-import './Task.css'
+import './TaskPage.css'
 import Task from '../../components/task'
 
 const taskContext = createContext();
