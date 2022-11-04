@@ -1,4 +1,4 @@
-import './LogIn.css'
+import './LogInPage.css'
 import FormInput from '../../components/form/FormInput'
 
 

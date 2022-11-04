@@ -1,4 +1,4 @@
-import './SignUp.css'
+import './SignUpPage.css'
 import FormInput from '../../components/form/FormInput'
 
 function SignUpPage() {
