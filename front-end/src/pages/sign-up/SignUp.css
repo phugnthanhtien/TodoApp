@@ -28,7 +28,7 @@ h1 {
   font-size: 30px;
 }
 
-.form__item input, button {
+.form__item input, .form__item button {
   width: 100%;
   height: 45px;
   padding: 0 15px;
@@ -56,7 +56,7 @@ a {
   color: black;
 }
 
-button {
+#signup-button {
   color: white;
   background-color: #0171d3;
   cursor: pointer;

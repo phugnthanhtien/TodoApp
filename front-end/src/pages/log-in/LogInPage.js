@@ -25,7 +25,7 @@ function LogInPage() {
               <a href="signup.html">Sign up</a>
           </div>
 
-          <button id="submit-button" onclick="onLogInForm()">Log In</button>
+          <button id="login-button" onclick="onLogInForm()">Log In</button>
       </div>
     </div>
   )
