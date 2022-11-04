@@ -1,3 +1,3 @@
-import Task from "./Task"
+import Task from "./TaskPage"
 
 export default Task;
