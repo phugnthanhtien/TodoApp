@@ -1,31 +1,29 @@
-import './LogIn.css'
+import styles from './login.module.css'
 import FormInput from '../../components/form/FormInput'
 
 
 function LogInPage() {
   return (
-    <div className="login-page">
-      <div className="form">
-          <h1>Log in</h1>
+    <div className={styles.loginPage}>
+      <div className={styles.form}>
+          <h1 className={styles.formTitle}>Login</h1>
           <FormInput 
             id="user-email" 
             type="email" 
-            placeholder="Your email"
+            placeholder="Email"
           />
           <FormInput
             id="user-password" 
             type="password" 
-            placeholder="Your password"
+            placeholder="Password"
           />
-          <div className="form__item-signup">
-            <div className="remember">
-              <input id="user-remember" type="checkbox"/> 
-              <label for="user-remember">Remember me</label>
+          <div className={styles.formHelper}>
+            <div>
+              <input type="checkbox"/> Remember me
             </div>
-              <a href="signup.html">Sign up</a>
+            <a>Sign up</a>
           </div>
-
-          <button id="login-button" onclick="onLogInForm()">Log In</button>
+          <button className={styles.loginButton}>Login</button>
       </div>
     </div>
   )

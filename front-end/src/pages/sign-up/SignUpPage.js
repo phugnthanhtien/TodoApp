@@ -1,11 +1,11 @@
-import './SignUp.css'
+import styles from './SignUp.module.css'
 import FormInput from '../../components/form/FormInput'
 
 function SignUpPage() {
   return (
-    <div class="signup-page">
-      <div class="form">
-          <h1>Sign up</h1>
+    <div class={styles.signUpPage}>
+      <div class={styles.form}>
+          <h1 className={styles.formTitle}>Sign up</h1>
           <FormInput 
             id="new-name" 
             type="text" 
@@ -21,10 +21,10 @@ function SignUpPage() {
             type="password" 
             placeholder="Password"
           />
-          <div class="form__item-login">
-              <a href="login.html">Log in</a>
+          <div class={styles.formHelper}>
+              <a>Log in</a>
           </div>
-          <button id="sign-up-button" onclick="onSignUpForm()">Create An Account</button>
+          <button className={styles.signUpButton}>Sign up</button>
       </div>
     </div>
   )
