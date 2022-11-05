@@ -2,7 +2,7 @@ import classNames from "classnames/bind";
 import styles from "./Project.module.css"
 const cx = classNames.bind(styles);
 
-function Project({ primary, outline, title }) {
+function Project({ primary, outline, data }) {
 
     const classes = cx("wrapper", {
         primary,
@@ -10,8 +10,8 @@ function Project({ primary, outline, title }) {
     })
 
     return (
-      <div className= {classes} >
-        {title}
+      <div className= {classes} onClick = {() => console.log(data._id)}>
+        {data.name}
       </div>
     );
   }

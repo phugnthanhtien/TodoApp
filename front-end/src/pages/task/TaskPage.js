@@ -1,8 +1,21 @@
-import './Task.css'
+import { createContext, useEffect, useState } from "react";
+
+import './TaskPage.css'
 import Task from '../../components/task'
 
-function TaskPage(props) {
-   console.log(props)
+const taskContext = createContext();
+
+function TaskPage() {
+
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+      fetch("http://127.0.0.1:3001/tasks")
+        .then((res) => res.json())
+        .then((data) => {
+          setTasks(data);
+        });
+    }, []);
 
    return(
     <div className="main">
@@ -15,14 +28,9 @@ function TaskPage(props) {
                 />
                 <button>Add task</button>
             </div>
-            <div className="list-task">
-                <Task
-                    content="Pepsi"
-                />
-                <Task
-                    content="Coca"
-                />
-            </div>
+            <taskContext.Provider value = {tasks} className="list-task">
+                {tasks.map(task => <Task key = {task._id} data = {task}/>)}
+            </taskContext.Provider>
         </div>
     </div>
    )

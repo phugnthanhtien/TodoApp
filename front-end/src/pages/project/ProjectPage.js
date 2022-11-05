@@ -3,7 +3,7 @@ import Popup from "reactjs-popup";
 import Project from "../../components/project";
 
 import classNames from "classnames/bind";
-import styles from "./ProjectPage.module.css";
+import styles from "./ProjectPage.css";
 import { useEffect, useState } from "react";
 const cx = classNames.bind(styles);
 
@@ -11,11 +11,10 @@ function ProjectPage() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/tasks")
+    fetch("http://127.0.0.1:3001/projects")
       .then((res) => res.json())
       .then((data) => {
         setProjects(data);
-        console.log(data);
       });
   }, []);
 
@@ -28,11 +27,11 @@ function ProjectPage() {
         >
           {(close) => <PopupEdit title={"Create Project"} close={close} />}
         </Popup>
-        {projects.map((project, index) => (
+        {projects.map(project => (
           <Project 
-          key={index} 
+          key={project._id} 
           primary 
-          title={project.content} />
+          data = {project} />
         ))}
       </div>
     </div>
