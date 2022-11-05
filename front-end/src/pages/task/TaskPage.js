@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 import './TaskPage.css'
 import Task from '../../components/task'
+import ProjectSideBar from '../../components/ProjectSideBar';
 
 const taskContext = createContext();
 
@@ -18,19 +19,27 @@ function TaskPage() {
     }, []);
 
    return(
-    <div className="main">
-        <div className="container">
-            <div className="add-task">
-                <input
-                id="new-task-input"
-                type="text"
-                placeholder="Enter new task"
-                />
-                <button>Add task</button>
+    <div className="wrapper">
+        <div className="header"></div>
+        <div className="main">
+            <div className="side-bar">
+                <ProjectSideBar />
             </div>
-            <taskContext.Provider value = {tasks} className="list-task">
-                {tasks.map(task => <Task key = {task._id} data = {task}/>)}
-            </taskContext.Provider>
+            <div className="tasks">
+                <div className="container">
+                    <div className="add-task">
+                        <input
+                        id="new-task-input"
+                        type="text"
+                        placeholder="Enter new task"
+                        />
+                        <button>Add task</button>
+                    </div>
+                    <taskContext.Provider value = {tasks} className="list-task">
+                        {tasks.map(task => <Task key = {task._id} data = {task}/>)}
+                    </taskContext.Provider>
+                </div>
+            </div>
         </div>
     </div>
    )

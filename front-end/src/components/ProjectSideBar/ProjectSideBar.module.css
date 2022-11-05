@@ -1,0 +1,59 @@
+.wrapper {
+    width: 19rem;
+    font-size: 1.2rem;
+    background-color: rgb(246,246,246);
+    overflow: auto;
+    font-family: sans-serif;
+    border-top: 1.5px solid rgba(70, 70, 70, 0.16);
+    border-right: 1.5px solid rgba(70, 70, 70, 0.16);
+    border-bottom: 1.5px solid rgba(70, 70, 70, 0.16);
+    position: fixed;
+    height: calc(100% - 3.5rem - 1px);
+}
+
+.title {
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(70, 70, 70, 0.16);
+}
+
+.content{
+    border-bottom: 1px solid rgba(70, 70, 70, 0.16);
+}
+
+.option {
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+}
+.option:hover {
+    background-color: rgb(227, 227, 227);
+}
+
+.option-content{
+    padding-left: .5rem;
+}
+
+.more {
+    flex: 1;
+}
+/* svg icon */
+.svg-icon {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+  
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+fill: black;
+}
+
+.svg-icon circle {
+stroke: #4691f6;
+stroke-width: 1;
+}
