@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import axios from '../../API/axios'
 
 import './TaskPage.css'
 import Task from '../../components/task'
@@ -6,16 +7,34 @@ import Task from '../../components/task'
 const taskContext = createContext();
 
 function TaskPage() {
-
+    const [newTask, setNewTask] = useState('')
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-      fetch("http://127.0.0.1:3001/tasks")
-        .then((res) => res.json())
-        .then((data) => {
-          setTasks(data);
-        });
-    }, []);
+        axios.get('/tasks').then(response => {
+            setTasks(response.data)
+        }).catch(err => {
+            console.log(err)
+        })
+    }, [])
+
+    function handleInputNewTask(event) {
+        setNewTask(event.target.value)
+    }
+
+    function handleAddNewTask() {
+        try {
+            axios.post('/tasks', { content: newTask })
+                .then(response => { 
+                    response.data.map(data => {
+                        console.log(data.content)
+                    })
+                })
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
 
    return(
     <div className="main">
@@ -25,8 +44,9 @@ function TaskPage() {
                 id="new-task-input"
                 type="text"
                 placeholder="Enter new task"
+                onChange={handleInputNewTask}
                 />
-                <button>Add task</button>
+                <button onClick={handleAddNewTask}>Add task</button>
             </div>
             <taskContext.Provider value = {tasks} className="list-task">
                 {tasks.map(task => <Task key = {task._id} data = {task}/>)}
