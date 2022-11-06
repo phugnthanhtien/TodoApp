@@ -1,6 +1,7 @@
 import PopupEdit from "../../components/popUpedit";
 import Popup from "reactjs-popup";
 import Project from "../../components/project";
+import axios from 'axios'
 
 import classNames from "classnames/bind";
 import styles from "./ProjectPage.css";
@@ -11,11 +12,11 @@ function ProjectPage() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3001/projects")
-      .then((res) => res.json())
-      .then((data) => {
-        setProjects(data);
-      });
+    axios.get(`http://127.0.0.1:3001/projects`)
+      .then(res => {
+        setProjects(res.data);
+      })
+      .catch(error => console.log(error));
   }, []);
 
   return (

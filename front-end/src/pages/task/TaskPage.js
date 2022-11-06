@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import axios from 'axios'
 
 import './TaskPage.css'
 import Task from '../../components/task'
@@ -11,11 +12,11 @@ function TaskPage() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-      fetch("http://127.0.0.1:3001/tasks")
-        .then((res) => res.json())
-        .then((data) => {
-          setTasks(data);
-        });
+        axios.get(`http://127.0.0.1:3001/tasks`)
+        .then(res => {
+            setTasks(res.data);
+        })
+        .catch(error => console.log(error));
     }, []);
 
    return(
