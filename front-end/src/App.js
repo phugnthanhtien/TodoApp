@@ -2,7 +2,7 @@ import Project from "./pages/project";
 import { Routes, Route } from "react-router-dom";
 import Task from "./pages/task";
 import React from "react";
-import LogInPage from "./pages/log-in";
+import Login from "./pages/log-in";
 import SignUpPage from "./pages/sign-up";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Routes>
       <Route path="/project" element={<Project />} />
       <Route path="/task" element={<Task />} />
-      <Route path="/login" element={<LogInPage/>} />
+      <Route path="/login" element={<Login/>} />
       <Route path="/signup" element={<SignUpPage/>} />
     </Routes>
   );

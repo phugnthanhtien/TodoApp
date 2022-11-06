@@ -1,22 +1,25 @@
 import styles from './SignUp.module.css'
-import FormInput from '../../components/form/FormInput'
+
 
 function SignUpPage() {
   return (
     <div class={styles.signUpPage}>
       <div class={styles.form}>
           <h1 className={styles.formTitle}>Sign up</h1>
-          <FormInput 
+          <input
+            className={styles.formInput}
             id="new-name" 
             type="text" 
             placeholder="Fullname"
           />
-          <FormInput 
+          <input
+            className={styles.formInput}
             id="new-email" 
             type="email" 
             placeholder="Email"
           />
-          <FormInput
+          <input
+            className={styles.formInput}
             id="new-password" 
             type="password" 
             placeholder="Password"
