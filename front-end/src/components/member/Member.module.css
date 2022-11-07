@@ -1,0 +1,26 @@
+.wrapper {
+    font-size: 1.2rem;
+    width: 19rem;
+    font-family: sans-serif;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    height: 2.8rem;
+}
+
+.wrapper:hover{
+    background-color: rgb(227, 227, 227);
+}
+
+.avatar {
+    width: 1.8rem;
+    height: 1.8rem;
+}
+
+.name {
+    padding-left: .5rem;
+}
+
+
