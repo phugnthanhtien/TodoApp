@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 
 function ProjectPage() {
   const [projects, setProjects] = useState([]);
-  const [inputData, setInputData] = useState({
+  const [newProject, setNewProject] = useState({
     name: ''
   })
 
@@ -26,13 +26,13 @@ function ProjectPage() {
   }, []);
   
   const onCreateProject = () => {
-    axios.post(`http://127.0.0.1:3001/projects`, { name: inputData })
+    axios.post(`http://127.0.0.1:3001/projects`, { name: newProject })
       .then(res => {})
       .catch(error => console.log(error));
   }
 
   return (
-    <ProjectContext.Provider value={[inputData, setInputData]}>
+    <ProjectContext.Provider value={[newProject, setNewProject]}>
       <div className={cx("wrapper")}>
         <div className={cx("project-container")}>
           <Popup
