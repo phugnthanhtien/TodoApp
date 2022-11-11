@@ -3,7 +3,8 @@ import axios from 'axios'
 
 import PopupEdit from "../../components/popUpedit";
 import Project from "../../components/project";
-import { ProjectContext } from "./ProjectContext";
+// import { ProjectContext } from "./ProjectContext";
+import useStore from '../../hooks/useStore.js';
 
 import classNames from "classnames/bind";
 import styles from "./ProjectPage.css";
@@ -12,7 +13,8 @@ const cx = classNames.bind(styles);
 
 
 function ProjectPage() {
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([]);
+  const { projectStore } = useStore();
   const [newProject, setNewProject] = useState({
     name: ''
   })
