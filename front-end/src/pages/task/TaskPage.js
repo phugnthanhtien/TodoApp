@@ -5,26 +5,21 @@ import Task from '../../components/task'
 import useStores from '../../hooks/useStores'
 import { action } from "mobx";
 
-const taskContext = createContext();
+
 
 function TaskPage() {
     const { taskStore } = useStores()
     taskStore.fetchTaskList()
-
-    let taskList = taskStore.taskList
-    console.log('hi123: ', taskList)
-
-    const [newTask, setNewTask] = useState('')
-    const [tasks, setTasks] = useState([]);
+    const taskList = taskStore.taskList
+    console.log("123", taskList)
+    const [input, setInput] = useState('')
 
 
     function handleAddTask() {
         try {
-            // axios.post('/tasks', { content: newTask })
-            
-            taskStore.addTask(newTask)
-            setNewTask('')
-
+            taskStore.addTask(input)
+            taskStore.fetchTaskList()
+            setInput('')
         }
         catch (err) {
             console.log(err)
@@ -39,9 +34,9 @@ function TaskPage() {
                 id="new-task-input"
                 type="text"
                 placeholder="Enter new task"
-                onChange={event => setNewTask(event.target.value)}
+                onChange={event => setInput(event.target.value)}
                 />
-                <button onClick={handleAddTask}>Add task</button>
+                <button onClick={action(handleAddTask)}>Add task</button>
             </div>
             <div className="list-task">
                 {taskList.map(task => <Task key = {task._id} data = {task}/>)}

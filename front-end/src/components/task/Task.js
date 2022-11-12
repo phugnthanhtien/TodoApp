@@ -3,12 +3,14 @@ import Popup from "reactjs-popup";
 import axios from "../../API/axios";
 
 import "./Task.module.css";
+import useStores from "../../hooks/useStores";
 
 function Task({ data }) {
+  const { taskStore } = useStores()
 
   function handleDeleteTask() {
     const id = data._id
-    axios.delete(`/tasks/${id}`)
+    taskStore.deleteTask(id)
   }
   
   return (
