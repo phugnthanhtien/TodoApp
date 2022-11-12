@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import RootStore from './index'
+import axios from '../API/axios';
 
 class ProjectStore{
     projects = [];
@@ -7,8 +7,15 @@ class ProjectStore{
         this.rootStore = rootStore;
         makeAutoObservable(this);
     }
+    getProject() {
+        axios.get('/projects')
+        .then(res => this.projects = res.data)
+        .catch(error => console.log(error));
+    }
     addProject(newProject) {
-        this.projects.push(newProject);
+        axios.post('/projects', { name: newProject })
+        .then(res => {})
+        .catch(error => console.log(error));
     }
 }
 

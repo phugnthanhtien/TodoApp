@@ -1,10 +1,9 @@
 import Popup from "reactjs-popup";
-import axios from 'axios'
 
 import PopupEdit from "../../components/popUpedit";
 import Project from "../../components/project";
-// import { ProjectContext } from "./ProjectContext";
-import useStore from '../../hooks/useStore.js';
+import { ProjectContext } from "./ProjectContext";
+import useStores from '../../hooks/useStores.js';
 
 import classNames from "classnames/bind";
 import styles from "./ProjectPage.css";
@@ -14,23 +13,17 @@ const cx = classNames.bind(styles);
 
 function ProjectPage() {
   // const [projects, setProjects] = useState([]);
-  const { projectStore } = useStore();
+  const { projectStore } = useStores();
+  const projects = projectStore.projects;
   const [newProject, setNewProject] = useState({
     name: ''
   })
-
   useEffect(() => {
-    axios.get(`http://127.0.0.1:3001/projects`)
-      .then(res => {
-        setProjects(res.data);
-      })
-      .catch(error => console.log(error));
+    projectStore.getProject();
   }, []);
-  
+
   const onCreateProject = () => {
-    axios.post(`http://127.0.0.1:3001/projects`, { name: newProject })
-      .then(res => {})
-      .catch(error => console.log(error));
+    projectStore.addProject(newProject);
   }
 
   return (
