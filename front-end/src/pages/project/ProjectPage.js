@@ -16,7 +16,7 @@ function ProjectPage() {
   useEffect(() => {
     projectStore.getProject();
   }, []);
-  
+
   let projects = projectStore.projects;
   const [newProject, setNewProject] = useState("");
 
@@ -40,8 +40,8 @@ function ProjectPage() {
             />
           )}
         </Popup>
-        {projects.map((project) => (
-          <Project key={project._id} primary data={project} />
+        {projects.map((project, index) => (
+          <Project key={index} primary data={project} />
         ))}
       </div>
     </div>

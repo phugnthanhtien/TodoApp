@@ -16,7 +16,9 @@ class ProjectStore {
   }
   addProject(newProject) {
     axios.post('/projects', { name: newProject })
-    .then(res => {this.projects = this.projects})
+    .then(res => {
+      this.projects.push(res.data)
+    })
     .catch(error => console.log(error));
   }
 }
