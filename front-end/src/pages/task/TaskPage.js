@@ -4,27 +4,33 @@ import './TaskPage.css'
 import Task from '../../components/task'
 import useStores from '../../hooks/useStores'
 import { action } from "mobx";
-
+import TaskStore from "../../stores/taskStore";
 
 
 function TaskPage() {
     const { taskStore } = useStores()
-    taskStore.fetchTaskList()
-    const taskList = taskStore.taskList
-    console.log("123", taskList)
+    const { tasks } = taskStore
+    
+    
+
     const [input, setInput] = useState('')
+    const [todos, setTodos] = useState(() => {
+        taskStore.loadTasks()
+        return tasks
+    })
 
+    const handleAddTask = () => {
 
-    function handleAddTask() {
-        try {
-            taskStore.addTask(input)
-            taskStore.fetchTaskList()
-            setInput('')
-        }
-        catch (err) {
-            console.log(err)
-        }
+        setTodos(prev => {
+            const newTodo = [...prev, input]
+            console.log(newTodo)
+            taskStore.createTask(input)
+            return newTodo
+        })
+        setInput('')
     }
+    
+    
 
    return(
     <div className="main">
@@ -33,13 +39,15 @@ function TaskPage() {
                 <input
                 id="new-task-input"
                 type="text"
-                placeholder="Enter new task"
+                value={input}
                 onChange={event => setInput(event.target.value)}
                 />
-                <button onClick={action(handleAddTask)}>Add task</button>
+                <button onClick={handleAddTask}>Add task</button>
             </div>
             <div className="list-task">
-                {taskList.map(task => <Task key = {task._id} data = {task}/>)}
+                {todos.map((todo, index) => (
+                    <li key={index}>{todo.content}</li>
+                ))}
             </div>
         </div>
     </div>
@@ -48,3 +56,5 @@ function TaskPage() {
 
 
 export default TaskPage
+
+// taskList.map(task => <Task key = {task._id} data = {task}/>)

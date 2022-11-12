@@ -5,18 +5,24 @@ import axios from '../API/axios'
 
 
 class TaskStore {
+  tasks = []
 
-  taskList
-
-  constructor() {
-    this.rootStore = rootStore
+  constructor(rootStore) {
     makeAutoObservable(this)
+    this.rootStore = rootStore
+    this.loadTasks()
   }
 
+  loadTasks() {
+    axios.get('/tasks').then(response => {
+      this.tasks = []
+      response.data.map(task => this.tasks.push(task))
+    })
+  }
 
-  addTask(input) {
+  createTask(input) {
     axios.post('/tasks', { content: input }).then(newTask => {
-      this.taskList.push(newTask)
+      this.tasks.push(newTask)
     })
   }
 
@@ -24,14 +30,6 @@ class TaskStore {
     axios.delete(`/tasks/${id}`)
   }
 
-  fetchTaskList() {
-    axios.get('/tasks').then(response => {
-      this.taskList = response.data
-    })
-    
-  }
-
-  
 }
 
 export default TaskStore
