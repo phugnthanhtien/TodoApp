@@ -1,22 +1,24 @@
-import { makeAutoObservable } from 'mobx';
-import axios from '../API/axios';
+import { makeAutoObservable } from "mobx";
+import axios from "../API/axios";
 
-class ProjectStore{
-    projects = [];
-    constructor(rootStore) {
-        this.rootStore = rootStore;
-        makeAutoObservable(this);
-    }
-    getProject() {
-        axios.get('/projects')
-        .then(res => this.projects = res.data)
-        .catch(error => console.log(error));
-    }
-    addProject(newProject) {
-        axios.post('/projects', { name: newProject })
-        .then(res => {})
-        .catch(error => console.log(error));
-    }
+class ProjectStore {
+  projects = [];
+  constructor(rootStore) {
+    this.rootStore = rootStore;
+    makeAutoObservable(this);
+  }
+  getProject() {
+    axios.get('/projects')
+    .then(res => {
+        this.projects = res.data
+    })
+    .catch(error => console.log(error));
+  }
+  addProject(newProject) {
+    axios.post('/projects', { name: newProject })
+    .then(res => {this.projects = this.projects})
+    .catch(error => console.log(error));
+  }
 }
 
 export default ProjectStore;

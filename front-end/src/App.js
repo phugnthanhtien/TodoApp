@@ -4,20 +4,20 @@ import Task from "./pages/task";
 import React from "react";
 import Login from "./pages/log-in";
 import SignUpPage from "./pages/sign-up";
-import { useObserver } from "mobx-react";
 import { rootStore } from "./stores";
+import { Provider } from "mobx-react";
 
 function App() {
-  return useObserver(() => (
-    // <Provider {...rootStore}>
+  return  (
+    <Provider {...rootStore}>
       <Routes>
         <Route path="/project" element={<Project />} />
         <Route path="/task" element={<Task />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
-    // </Provider>
-  ));
+    </Provider>
+  );
 }
 
 export default App;

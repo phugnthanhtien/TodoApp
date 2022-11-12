@@ -5,9 +5,7 @@ import { useContext } from "react";
 const cx = classNames.bind(styles);
 
 
-function PopupEdit({ title, close, id, onHandle}) {
-    const [ ,setNewProject] = useContext(ProjectContext);
-
+function PopupEdit({ title, close, setNew, onHandle}) {
     return (
       <div className={cx("wrapper")}>
         <div className={cx(["popup", "animate"])}>
@@ -28,7 +26,7 @@ function PopupEdit({ title, close, id, onHandle}) {
             <h1>{title}</h1>
           </div>
           <div className={cx("content")}>
-            <input className={cx("input")} placeholder={title} onChange = {(e) => setNewProject(e.target.value)}/>
+            <input className={cx("input")} placeholder={title} onChange = {(e) => setNew(e.target.value)}/>
           </div>
           <div className={cx("button")} onClick = {() => onHandle()}>
             <h3>{title}</h3>
