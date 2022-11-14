@@ -23,15 +23,8 @@ class TaskStore {
     })
   }
 
-  deleteTask(id) {
-    let key
-    console.log(id)
-    axios.delete(`/tasks/${id}`)
-    this.tasks.forEach((task, index) => {
-      if (task._id = id)
-        key = index
-    })
-    console.log(key)
+  deleteTask(data, key) {
+    axios.delete(`/tasks/${data._id}`)
     this.tasks.splice(key, 1)
   }
 

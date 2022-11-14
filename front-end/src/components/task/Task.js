@@ -9,10 +9,12 @@ import { observer } from "mobx-react-lite";
 
 function Task({ data }) {
   const { taskStore } = useStores()
+  const tasks = taskStore.tasks
+  //const id = data._id
 
   function handleDeleteTask() {
-    const id = data._id
-    taskStore.deleteTask(id)
+    const key = tasks.indexOf(data)
+    taskStore.deleteTask(data, key)
   }
   
   return (

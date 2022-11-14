@@ -12,12 +12,14 @@ function TaskPage() {
         taskStore.loadTasks()
     }, [])
 
-    let tasks = taskStore.tasks
+    const tasks = taskStore.tasks
     const [input, setInput] = useState('')
 
     const handleAddTask = () => {
-        taskStore.createTask(input)
-        setInput('')
+        if (input) {
+            taskStore.createTask(input)
+            setInput('')
+        }
     }
     
     return(
