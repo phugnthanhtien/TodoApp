@@ -8,11 +8,8 @@
 }
  
 .container {
-    width: 500px;
+    width: 530px;
     height: 500px;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 5px 5px 10px 5px rgb(170, 158, 246);
 }
  
 .list-task {

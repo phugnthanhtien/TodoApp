@@ -1,60 +1,47 @@
-import { createContext, useEffect, useState } from "react";
-import axios from '../../API/axios'
+import { useEffect, useState } from "react";
 import './TaskPage.css'
 import Task from '../../components/task'
 import useStores from '../../hooks/useStores'
-import { action } from "mobx";
-import TaskStore from "../../stores/taskStore";
+import { observer } from "mobx-react"
 
 
 function TaskPage() {
     const { taskStore } = useStores()
-    const { tasks } = taskStore
-    
-    
 
-    const [input, setInput] = useState('')
-    const [todos, setTodos] = useState(() => {
+    useEffect(() => {
         taskStore.loadTasks()
-        return tasks
-    })
+    }, [])
+
+    let tasks = taskStore.tasks
+    const [input, setInput] = useState('')
 
     const handleAddTask = () => {
-
-        setTodos(prev => {
-            const newTodo = [...prev, input]
-            console.log(newTodo)
-            taskStore.createTask(input)
-            return newTodo
-        })
+        taskStore.createTask(input)
         setInput('')
     }
     
-    
-
-   return(
-    <div className="main">
-        <div className="container">
-            <div className="add-task">
-                <input
-                id="new-task-input"
-                type="text"
-                value={input}
-                onChange={event => setInput(event.target.value)}
-                />
-                <button onClick={handleAddTask}>Add task</button>
-            </div>
-            <div className="list-task">
-                {todos.map((todo, index) => (
-                    <li key={index}>{todo.content}</li>
-                ))}
+    return(
+        <div className="main">
+            <div className="container">
+                <div className="add-task">
+                    <input
+                    id="new-task-input"
+                    type="text"
+                    value={input}
+                    onChange={event => setInput(event.target.value)}
+                    />
+                    <button onClick={handleAddTask}>Add task</button>
+                </div>
+                <div className="list-task">
+                    {tasks.map((task, index) => (
+                        <Task key={index} data={task}/>
+                    ))}
+                </div>
             </div>
         </div>
-    </div>
-   )
+    )
 }
 
 
-export default TaskPage
+export default observer(TaskPage)
 
-// taskList.map(task => <Task key = {task._id} data = {task}/>)

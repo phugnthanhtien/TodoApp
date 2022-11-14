@@ -1,6 +1,4 @@
-import { makeAutoObservable, action } from 'mobx'
-import { rootStore } from '.'
-import getTasks from '../API/task'
+import { makeAutoObservable } from 'mobx'
 import axios from '../API/axios'
 
 
@@ -14,20 +12,27 @@ class TaskStore {
   }
 
   loadTasks() {
-    axios.get('/tasks').then(response => {
-      this.tasks = []
-      response.data.map(task => this.tasks.push(task))
+    axios.get('/tasks').then(res => {
+      this.tasks = res.data
     })
   }
 
   createTask(input) {
-    axios.post('/tasks', { content: input }).then(newTask => {
-      this.tasks.push(newTask)
+    axios.post('/tasks', { content: input }).then(res => {
+      this.tasks.push(res.data)
     })
   }
 
   deleteTask(id) {
+    let key
+    console.log(id)
     axios.delete(`/tasks/${id}`)
+    this.tasks.forEach((task, index) => {
+      if (task._id = id)
+        key = index
+    })
+    console.log(key)
+    this.tasks.splice(key, 1)
   }
 
 }

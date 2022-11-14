@@ -4,6 +4,8 @@ import axios from "../../API/axios";
 
 import "./Task.module.css";
 import useStores from "../../hooks/useStores";
+import { observable } from "mobx";
+import { observer } from "mobx-react-lite";
 
 function Task({ data }) {
   const { taskStore } = useStores()
@@ -30,4 +32,4 @@ function Task({ data }) {
   );
 }
 
-export default Task;
+export default observer(Task)
